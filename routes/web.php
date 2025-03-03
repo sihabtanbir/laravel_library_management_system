@@ -14,6 +14,9 @@ Route::post('/login',[userController::class, 'login']);
 Route::get('/register',[userController::class, 'create']);
 Route::post('/register',[userController::class, 'register']);
 
+Route::get('/update',[userController::class, 'edit']);
+Route::post('/update',[userController::class, 'update']);
+
 Route::get('/dashboard', function () {
-    return view('pages.dashboard');
+    return view('admin.dashboard');
 });

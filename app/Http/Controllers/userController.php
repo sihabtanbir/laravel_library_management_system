@@ -28,7 +28,7 @@ class userController extends Controller
 
         Auth::login($user);
  
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
     public function login(Request $request){
@@ -51,6 +51,35 @@ class userController extends Controller
     
            request()->session()->regenerate();
     
-           return redirect('/');
+           return redirect('/dashboard');
         }
+
+        public function edit(User $user){
+          
+            return view('admin.update', ['user' => $user]);
+        }
+
+
+        public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,',
+            'password' => 'nullable|min:6|confirmed',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+        dd('successfully update');
+        //return redirect()->back();
+    }
+        
+        
 }

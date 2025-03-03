@@ -42,9 +42,20 @@
             <a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
             <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
           </div>
+
+          @guest
           <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
           </div>
+          @endguest
+
+          @auth
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/dashboard" class="text-sm/6 font-semibold text-gray-900">Dashboard <span aria-hidden="true">&rarr;</span></a>
+          </div>
+          @endauth
+
+          
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
         <div class="lg:hidden" role="dialog" aria-modal="true">
