@@ -51,11 +51,7 @@
           
         </div>
     
-        <div>
-          <p class="p-2 text-gray-700 ">
-            You have account? Please <a href="/login" class="text-blue-500">sign In</a>
-          </p>
-        </div>
+      
       
         <div class="m-6 flex items-center justify-center gap-x-6">
           <button type="reset" class="text-sm/6 font-semibold text-gray-900">Cancel</button>

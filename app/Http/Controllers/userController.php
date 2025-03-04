@@ -54,21 +54,24 @@ class userController extends Controller
            return redirect('/dashboard');
         }
 
-        public function edit(User $user){
-          
-            return view('admin.update', ['user' => $user]);
-        }
-
-
-        public function update(Request $request,$id)
+    public function edit()
     {
+        return view('admin.update', ['user' => Auth::user()]);
+    }
+
+   
+    public function update(Request $request)
+    {
+       
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,',
-            'password' => 'nullable|min:6|confirmed',
+            'email' => 'required|email|unique:users' ,
+            'password' => 'nullable|min:8',
         ]);
 
-        $user = User::findOrFail($id);
+        $user = Auth::user();
+
         $user->name = $request->name;
         $user->email = $request->email;
 
@@ -77,9 +80,18 @@ class userController extends Controller
         }
 
         $user->save();
-        dd('successfully update');
-        //return redirect()->back();
+
+        dd('update');
+        //return back();
     }
-        
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
         
 }
