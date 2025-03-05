@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('category');
             $table->string('quantity');
             $table->string('total_page');
-            $table->string('prize');
+            $table->string('price');
+            $table->string('publish_date');
             $table->timestamps();
         });
 

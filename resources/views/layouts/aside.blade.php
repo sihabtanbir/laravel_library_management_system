@@ -44,13 +44,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./widgets/small-box.html" class="nav-link">
+                <a href="/show_book" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p> See Books </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/book" class="nav-link">
+                <a href="/add_book" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Add Book</p>
                 </a>
@@ -61,6 +61,14 @@
                   <p>Add Category</p>
                 </a>
               </li> 
+
+              <li class="nav-item">
+                <a href="/book_author" class="nav-link">
+                  <i class="nav-icon bi bi-circle"></i>
+                  <p>Add Author</p>
+                </a>
+              </li>
+
             </ul>
           </li>
           <li class="nav-item">
@@ -108,7 +116,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/update" class="nav-link">
+                <a href="/update/{id}" class="nav-link">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
                   <p>
                    Update Profile

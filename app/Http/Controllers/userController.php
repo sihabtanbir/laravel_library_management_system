@@ -54,9 +54,10 @@ class userController extends Controller
            return redirect('/dashboard');
         }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.update', ['user' => Auth::user()]);
+        $users = User::find('$id');
+        return view('admin.update', compact('users'));
     }
 
    
@@ -70,7 +71,7 @@ class userController extends Controller
             'password' => 'nullable|min:8',
         ]);
 
-        $user = Auth::user();
+        $user = Auth::findOrFail($id);
 
         $user->name = $request->name;
         $user->email = $request->email;
