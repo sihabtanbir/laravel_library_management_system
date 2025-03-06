@@ -55,9 +55,11 @@ class userController extends Controller
         }
 
     public function edit($id)
-    {
-        $users = User::find('$id');
-        return view('admin.update', compact('users'));
+    {   
+
+        $users = User::findOrFail($id);
+        $users = User::all();
+        return view('admin.update',  compact('users'));
     }
 
    
@@ -71,7 +73,7 @@ class userController extends Controller
             'password' => 'nullable|min:8',
         ]);
 
-        $user = Auth::findOrFail($id);
+        $user = User::findOrFail($request->id);
 
         $user->name = $request->name;
         $user->email = $request->email;

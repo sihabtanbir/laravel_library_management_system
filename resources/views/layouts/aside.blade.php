@@ -82,13 +82,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./layout/unfixed-sidebar.html" class="nav-link">
+                <a href="/show_student" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>View Studens</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./layout/fixed-sidebar.html" class="nav-link">
+                <a href="/add_student" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Add Student</p>
                 </a>
@@ -116,7 +116,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/update/{id}" class="nav-link">
+              
+                    
+               
+                <a href="{{route('edit_user')}}" class="nav-link">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
                   <p>
                    Update Profile

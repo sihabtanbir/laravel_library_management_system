@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\StudentsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,8 +16,8 @@ Route::post('/login',[userController::class, 'login']);
 Route::get('/register',[userController::class, 'create']);
 Route::post('/register',[userController::class, 'register']);
 
-Route::get('/update/{id}',[userController::class, 'edit']);
-Route::put('/update',[userController::class, 'update']);
+Route::get('/update',[userController::class, 'edit'])->name('edit_user');
+Route::put('/update',[userController::class, 'update'])->name('update_user');
 Route::get('/logout',[userController::class, 'logout']);
 
 Route::get('/dashboard', function () {
@@ -38,4 +39,12 @@ Route::get('/show_book',[BookController::class, 'show_book']);
 Route::get('/edit_book/{id}',[BookController::class, 'edit_book'])->name('edit_book');
 Route::put('/update_book',[BookController::class, 'update_book'])->name('update_book');
 Route::delete('/delete_book/{id}',[BookController::class, 'delete_book'])->name('delete_book');
+
+
+Route::get('/add_student',[StudentsController::class, 'create']);
+Route::post('/add_student',[StudentsController::class, 'store']);
+Route::get('/show_student',[StudentsController::class, 'show']);
+//Route::get('/edit_book/{id}',[StudentsController::class, 'edit_book'])->name('edit_book');
+//Route::put('/update_book',[StudentsController::class, 'update_book'])->name('update_book');
+//Route::delete('/delete_book/{id}',[StudentsController::class, 'delete_book'])->name('delete_book');
 
