@@ -1,12 +1,12 @@
-    @extends('layouts.admin')
+    @extends('layouts.student')
 
     @section('content')
 
   
 
-    @foreach ($users as $user)
+    @foreach ($students as $student)
     
-    <form action="{{route('update_user')}}" method="POST">
+    <form action="{{route('update_student')}}" method="POST">
       @csrf
       @method('PUT')
         <div class="space-y-12">
@@ -15,13 +15,13 @@
             
       
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <input type="hidden" name="id" id="" value="{{$user->id}}">
+              <input type="hidden" name="id" id="" value="{{$student->id}}">
               <div class="sm:col-span-4">
                 <label for="name" class="block text-sm/6 font-medium text-gray-900">name</label>
                 <div class="mt-2">
                   <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                    
-                    <input type="text" name="name" id="name" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" value="{{$user->name}}" >
+                    <input type="text" name="name" id="name" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" value="{{$student->name}}" >
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                 <div class="mt-2">
                   <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                    
-                    <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" value="{{$user->email}}">
+                    <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="jabc@xyz.com">
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 <div class="mt-2">
                   <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                    
-                    <input type="password" name="password" id="password" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" value="">
+                    <input type="password" name="password" id="password" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="*******">
                   </div>
                 </div>
               </div>

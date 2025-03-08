@@ -6,7 +6,7 @@
        
         <!--end::Brand Image-->
         <!--begin::Brand Text-->
-        <span class="brand-text fw-light">Admin</span>
+        <span class="brand-text fw-light">Student</span>
         <!--end::Brand Text-->
       </a>
       <!--end::Brand Link-->
@@ -115,11 +115,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
               
                     
                
-                <a href="{{route('show_user')}}" class="nav-link">
+                <a href="{{route('student.profile')}}" class="nav-link">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
                   <p>
                   See Profile
@@ -129,7 +130,21 @@
                
               </li>
               <li class="nav-item">
-                <a href="{{route('user_logout')}}" class="nav-link">
+              
+                    
+               
+                <a href="{{route('edit_student')}}" class="nav-link">
+                  <i class="nav-icon bi bi-box-arrow-in-right"></i>
+                  <p>
+                   Update Profile
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+               
+              </li>
+
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
                   <p>
                    Log out

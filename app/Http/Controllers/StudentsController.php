@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Students;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class StudentsController extends Controller
 {
@@ -12,7 +14,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth.student_login');
     }
 
     /**
@@ -68,12 +70,44 @@ class StudentsController extends Controller
         return view('admin.show_student', compact('students'));
     }
 
+    public function login(Request $request){
+        $validation = $request->validate([
+            
+            'email' => 'required','email',
+            'password' => 'required',
+
+        ]);
+
+        
+
+        if(! Auth::guard('student')->attempt($validation)){
+            throw ValidationException::withMessages([
+                'email' => 'please check your mail',
+                'password' => 'please check your password'
+                
+              ]);
+           }
+    
+           request()->session()->regenerate();
+    
+           return redirect('student_dashboard');
+          
+        }
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Students $students)
+    public function show_student()
     {
-        //
+        $students = Students::all();
+        return view('student.show_student', compact('students'));
+    }
+
+    public function edit($id)
+    {
+       $students = Students::findOrFail($id);
+       $students = Students::all();
+        return view('student.update',  compact('students'));
     }
 
     /**
@@ -91,4 +125,13 @@ class StudentsController extends Controller
     {
         //
     }
+    public function logoutStudent(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/student_login');
+    }
+       
 }

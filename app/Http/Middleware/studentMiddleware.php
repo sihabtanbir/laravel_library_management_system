@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class userMiddleware
+class studentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,11 @@ class userMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {   
-
-        if(Auth::guard('web')->check()){
-            return redirect()->route('login');
+    {
+        
+        if(Auth::guard('student')->check()){
+            return redirect()->route('student_login');
         }
         return $next($request);
-       
-        
     }
 }

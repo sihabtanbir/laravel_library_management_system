@@ -41,7 +41,7 @@ class userController extends Controller
 
         
 
-        if(! Auth::attempt($validation)){
+        if(! Auth::guard('web')->attempt($validation)){
             throw ValidationException::withMessages([
                 'email' => 'please check your mail',
                 'password' => 'please check your password'
@@ -53,6 +53,12 @@ class userController extends Controller
     
            return redirect('/dashboard');
         }
+
+    public function show()
+    {   
+
+        return view('admin.show_user', ['user' => Auth::user()]);
+    }
 
     public function edit($id)
     {   
@@ -84,11 +90,11 @@ class userController extends Controller
 
         $user->save();
 
-        dd('update');
-        //return back();
+       
+        return back();
     }
 
-    public function logout(Request $request)
+    public function userLogout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

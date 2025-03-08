@@ -44,8 +44,12 @@
           </div>
 
           @guest
-          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
+            <a href="/login" class="text-sm/6 font-semibold text-gray-900 bg-gray-200 p-2 rounded-sm">admin <span aria-hidden="true">&rarr;</span></a>
+            
+              
+              <a href="/student_login" class="text-sm/6 font-semibold text-gray-900 btn bg-gray-200 p-2 rounded-sm">student <span aria-hidden="true">&rarr;</span></a>
+            
           </div>
           @endguest
 
