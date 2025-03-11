@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\BookIssuesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,24 +51,16 @@ Route::get('/dashboard', function () {
     Route::get('/show_student',[StudentsController::class, 'show']);
 
 
-    Route::withoutMiddleware('web')->group(function () {
-      
+    Route::get('/books', [BookIssuesController::class, 'listBooks'])->name('book.books');
+
+     Route::get('/books/issue', [BookIssuesController::class, 'showIssueForm'])->name('book.issue.form');
+     Route::post('/books/issue', [BookIssuesController::class, 'issueBook'])->name('book.issue');
+    
+     Route::get('/books/return', [BookIssuesController::class, 'showReturnForm'])->name('book.return.form');
+     Route::get('/books/return/{id}', [BookIssuesController::class, 'returnBook'])->name('return_book');
+  
 
 
-        Route::get('/student_login',[StudentsController::class, 'index']);
-        Route::post('/student_login',[StudentsController::class, 'login'])->name('student.login');
-        Route::get('/student_profile',[StudentsController::class, 'show_student'])->name('student.profile');
-        Route::get('/edit_student/{id}',[StudentsController::class, 'edit'])->name('edit.student')->middleware('student');
-        //Route::put('/update_book',[StudentsController::class, 'update_book'])->name('update_book');
-        //Route::delete('/delete_book/{id}',[StudentsController::class, 'delete_book'])->name('delete_book');
-        Route::get('/logout',[StudentsController::class, 'logoutStudent']);
     
-    
-        Route::get('/student_dashboard', function () {
-            return view('student.dashboard');
-        });
-    
-    });
-
    
 

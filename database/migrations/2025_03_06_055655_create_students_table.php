@@ -20,7 +20,9 @@ return new class extends Migration
             $table-> string('semester');
             $table-> string('class_roll');
             $table-> string('section');
-            $table-> string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

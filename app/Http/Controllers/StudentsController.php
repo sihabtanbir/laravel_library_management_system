@@ -88,7 +88,8 @@ class StudentsController extends Controller
               ]);
            }
     
-           request()->session()->regenerate();
+           $request->session()->regenerate();
+           
     
            return redirect('student_dashboard');
           

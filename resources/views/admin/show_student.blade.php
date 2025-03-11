@@ -6,7 +6,7 @@
 
 
 
-        <table class="table table-striped table-bordered mx-4 overflow-hidden mr-4">
+        <table class="table table-striped table-bordered ">
             <thead>
                 <tr>
                     <th>#</th>

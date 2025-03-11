@@ -14,9 +14,7 @@
                 
                 <input type="email" name="email" id="email" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="abc@xyz.com">
               </div>
-              @error('email')
-              <p class="text-sm text-red-400">{{$message}}</p>
-          @enderror
+            
             </div>
           </div>
           
@@ -27,9 +25,7 @@
                
                 <input type="password" name="password" id="password" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="******">
               </div>
-              @error('password')
-              <p class="text-sm text-red-400">{{$message}}</p>
-          @enderror
+            
             </div>
 
           
