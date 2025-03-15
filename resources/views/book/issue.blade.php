@@ -7,8 +7,8 @@
     <form action="{{route('book.issue')}}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="student_id">Select student:</label>
-            <select name="student_id" class="form-control" required>
+            <label for="user_id">Select student:</label>
+            <select name="user_id" class="form-control" required>
                 @foreach($students as $student)
                     <option value="{{ $student->id }}">{{ $student->name }}</option>
                 @endforeach

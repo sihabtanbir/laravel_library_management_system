@@ -60,4 +60,17 @@
       <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
     </div>
   </form>
+
+  <footer class="app-footer">
+    <!--begin::To the end-->
+    <div class="float-end d-none d-sm-inline">Anything you want</div>
+    <!--end::To the end-->
+    <!--begin::Copyright-->
+    <strong>
+      Copyright &copy; 2025&nbsp;
+      Tanbir Ahmmed Sihab
+    </strong>
+    All rights reserved.
+    <!--end::Copyright-->
+  </footer>
   

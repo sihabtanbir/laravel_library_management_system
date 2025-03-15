@@ -17,10 +17,27 @@ class userMiddleware
     public function handle(Request $request, Closure $next): Response
     {   
 
-        if(Auth::guard('web')->check()){
-            return redirect()->route('login');
+        if(Auth::check())
+        {
+            if(Auth::user()->role==='admin')
+            {
+                return $next($request);
+
+            }elseif(Auth::user()->role==='student')
+            {
+                return $next($request);
+            }
+            else{
+                Session:flush();
+                return redirect()->route('login');
+            }
+             
+            
+        } else{
+            
+            return redirect()->route('auth.login');
         }
-        return $next($request);
+
        
         
     }

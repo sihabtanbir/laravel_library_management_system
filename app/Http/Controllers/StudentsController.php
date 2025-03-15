@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Students;
+use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
+
 
 class StudentsController extends Controller
 {
@@ -14,7 +14,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        return view('auth.student_login');
+        return view('student.dashboard');
     }
 
     /**
@@ -22,7 +22,6 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        
         return view('admin.addStudent');
     }
 
@@ -32,107 +31,113 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'session' => 'required',
-            'semester' => 'required',
-            'class_roll' => 'required',
-            'section' => 'required',
-            'password' => 'required',
-            
-
-        ]);
-
-       $student = new Students();
-
-       $student->name = $request->name;
-       $student->email = $request->email;
-       $student->phone = $request->phone;
-       $student->session = $request->session;
-       $student->semester = $request->semester;
-       $student->class_roll = $request->class_roll;
-       $student->section = $request->section;
-       
-       $student->password = $request->password;
-       $student->save();
+                    'name' => 'required',
+                    'email' => 'required',
+                    'phone' => 'required',
+                    'session' => 'required',
+                    'semester' => 'required',
+                    'class_roll' => 'required',
+                    'section' => 'required',
+                    'password' => 'required',
+                    
         
- 
-        return redirect('show_student');
+                ]);
+        
+               $student = new User();
+        
+               $student->name = $request->name;
+               $student->email = $request->email;
+               $student->phone = $request->phone;
+               $student->session = $request->session;
+               $student->semester = $request->semester;
+               $student->class_roll = $request->class_roll;
+               $student->section = $request->section;
+               
+               $student->password = $request->password;
+               $student->save();
+                
+         
+                return redirect('show_student');
     }
+
+    public function show_student()
+    {
+    
+         $students = User::all();
+         $students = User::where('role', 'student')->get();
+        return view('admin.show_student', compact('students'));
+     }
 
     /**
      * Display the specified resource.
      */
     public function show()
     {
-        $students = Students::all();
-        return view('admin.show_student', compact('students'));
+       
+    
+         $students = User::where('id', $id=Auth::user()->id)->get();
+        return view('student.show_student', compact('students'));
+   
     }
-
-    public function login(Request $request){
-        $validation = $request->validate([
-            
-            'email' => 'required','email',
-            'password' => 'required',
-
-        ]);
-
-        
-
-        if(! Auth::guard('student')->attempt($validation)){
-            throw ValidationException::withMessages([
-                'email' => 'please check your mail',
-                'password' => 'please check your password'
-                
-              ]);
-           }
-    
-           $request->session()->regenerate();
-           
-    
-           return redirect('student_dashboard');
-          
-        }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function show_student()
+    public function edit(string $id)
     {
-        $students = Students::all();
-        return view('student.show_student', compact('students'));
-    }
-
-    public function edit($id)
-    {
-       $students = Students::findOrFail($id);
-       $students = Students::all();
+        $students = User::where('id', $id=Auth::user()->id)->get();
+        
         return view('student.update',  compact('students'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name' => 'nullable',
+            'email' => 'nullable|email|unique:users' ,
+            'phone' => 'nullable',
+            'session' => 'nullable',
+            'semester' => 'nullable',
+            'class_roll' => 'nullable',
+            'section' => 'nullable',
+            'password' => 'nullable',
+            
+        ]);
+
+        $user = User::findOrFail($request->id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->session = $request->session;
+        $user->semester = $request->semester;
+        $user->class_roll = $request->class_roll;
+        $user->section = $request->section;
+        
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+       
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Students $students)
-    {
-        //
-    }
-    public function logoutStudent(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/student_login');
+         $request->session()->regenerateToken();
+    
+        return redirect('/login');
     }
-       
 }

@@ -4,7 +4,7 @@
 
   
 
-    @foreach ($users as $user)
+   
     
     <form action="{{route('update_user')}}" method="POST">
       @csrf
@@ -13,9 +13,11 @@
           <div class="border-b border-gray-900/10 p-12">
             <h2 class="text-base/7 font-semibold text-gray-900">Edit Profile</h2>
             
-      
+            @foreach ($users as $user)
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+             
               <input type="hidden" name="id" id="" value="{{$user->id}}">
+              
               <div class="sm:col-span-4">
                 <label for="name" class="block text-sm/6 font-medium text-gray-900">name</label>
                 <div class="mt-2">
@@ -50,11 +52,9 @@
       
              
             </div>
+            @endforeach
           </div>
       
-        
-      
-          
         </div>
     
       
@@ -65,7 +65,7 @@
         </div>
       </form>
 
-    @endforeach
+   
       
 
     @endsection

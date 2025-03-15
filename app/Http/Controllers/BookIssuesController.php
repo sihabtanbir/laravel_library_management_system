@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Students;
 use App\Models\bookIssues;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class BookIssuesController extends Controller
 {
@@ -20,19 +20,33 @@ class BookIssuesController extends Controller
         return view('book.books', compact('issues'));
     }
 
+    public function showBooks(Book $book){
+        $books = Book::all();
+        return view('student.show_book', compact('books'));
+    }
+    public function studentBooks()
+    {
+        $issues = bookIssues::where('user_id', Auth::user()->id)->get();
+        
+        
+        return view('student.books', compact('issues'));
+    }
     //Show issue book form
     public function showIssueForm()
     {
         $books = Book::where('quantity', '>', 0)->get();
-        $students = Students::all();
+        $students = User::all();
+         $students = User::where('role', 'student')->get();
         return view('book.issue', compact('books', 'students'));
     }
+
+   
 
     // // Issue a book
     public function issueBook(Request $request)
     {
         $request->validate([
-            'student_id' => 'required|exists:students,id',
+            'user_id' => 'required|exists:users,id',
             'book_id' => 'required|exists:books,id',
         ]);
 
@@ -40,7 +54,7 @@ class BookIssuesController extends Controller
         $book_name = $book->name;
         $author = $book->author_name;
        
-         $student= Students::findOrFail($request->student_id);
+         $student= User::findOrFail($request->user_id);
          $student_name= $student->name;
 
         if ($book->quantity < 1) {
@@ -51,7 +65,7 @@ class BookIssuesController extends Controller
 
         
 
-        $issue->student_id = $request->student_id;
+        $issue->user_id = $request->user_id;
         $issue->book_id = $request->book_id;
         $issue->student_name = $student_name;
         $issue->book_name = $book_name;

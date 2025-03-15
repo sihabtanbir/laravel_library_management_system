@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class userController extends Controller
@@ -28,7 +29,7 @@ class userController extends Controller
 
         Auth::login($user);
  
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
     public function login(Request $request){
@@ -40,47 +41,54 @@ class userController extends Controller
         ]);
 
         
-
-        if(! Auth::guard('web')->attempt($validation)){
+        if(! Auth::attempt($validation)){
             throw ValidationException::withMessages([
                 'email' => 'please check your mail',
                 'password' => 'please check your password'
                 
               ]);
            }
+
+        if(Auth::attempt($validation)){
+           
+              if(Auth::User()->role == 'admin'){
+                return redirect('/dashboard');
+            }else{
+                return redirect('/student_dashboard');
+                }
+        };
     
            request()->session()->regenerate();
     
-           return redirect('/dashboard');
-        }
+           return redirect('/');
+        
+    }
 
     public function show()
     {   
-
-        return view('admin.show_user', ['user' => Auth::user()]);
+        $users = User::where('id', Auth::user()->id)->get();
+        return view('admin.show_user', compact('users'));
     }
 
     public function edit($id)
     {   
 
-        $users = User::findOrFail($id);
-        $users = User::all();
+        $users = User::where('id', $id=Auth::user()->id)->get();
+       
         return view('admin.update',  compact('users'));
     }
 
    
     public function update(Request $request)
     {
-       
-
+      
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users' ,
-            'password' => 'nullable|min:8',
+            'name' => 'nullable',
+            'email' => 'nullable' ,
+            'password' => 'nullable',
         ]);
 
         $user = User::findOrFail($request->id);
-
         $user->name = $request->name;
         $user->email = $request->email;
 
@@ -102,5 +110,27 @@ class userController extends Controller
 
         return redirect('/login');
     }
+
+    public function deleteStudent($id)
+    {
         
-}
+        $student = User::findOrFail($id);
+
+        $student->delete();
+
+        return redirect()->back()->with('success', 'student delete');
+    }
+
+    public function convertAdmin($id)
+    {
+        
+        $student = User::findOrFail($id);
+        $student->role = 'admin';
+
+        $student->save();
+
+        return redirect()->back()->with('success', 'convert to admin');
+    }
+      
+        
+} 

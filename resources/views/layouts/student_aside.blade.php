@@ -2,7 +2,7 @@
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
       <!--begin::Brand Link-->
-      <a href="/dashboard" class="brand-link">
+      <a href="/student_dashboard" class="brand-link">
        
         <!--end::Brand Image-->
         <!--begin::Brand Text-->
@@ -23,7 +23,7 @@
           data-accordion="false"
         >
           <li class="nav-item menu-open">
-            <a href="/dashboard" class="nav-link active">
+            <a href="/student_dashboard" class="nav-link active">
               <i class="nav-icon bi bi-speedometer"></i>
               <p>
                 Dashboard
@@ -44,60 +44,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/show_book" class="nav-link">
+                <a href="{{route('book.student')}}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p> See Books </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/add_book" class="nav-link">
+                <a href="{{route('student.books')}}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
-                  <p>Add Book</p>
+                  <p>Issue Books</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/category" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Add Category</p>
-                </a>
-              </li> 
-
-              <li class="nav-item">
-                <a href="/book_author" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Add Author</p>
-                </a>
-              </li>
-
+              
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-clipboard-fill"></i>
-              <p>
-               Students Details
-               
-                <i class="nav-arrow bi bi-chevron-right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/show_student" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>View Studens</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/add_student" class="nav-link">
-                  <i class="nav-icon bi bi-circle"></i>
-                  <p>Add Student</p>
-                </a>
-              </li>
-    
-             
-            </ul>
-          </li>
-          
+        
            
              
             
@@ -129,19 +90,7 @@
                 </a>
                
               </li>
-              <li class="nav-item">
-              
-                    
-               
-                <a href="{{route('edit_student')}}" class="nav-link">
-                  <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                  <p>
-                   Update Profile
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-               
-              </li>
+             
 
               <li class="nav-item">
                 <a href="/logout" class="nav-link">

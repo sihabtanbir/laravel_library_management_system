@@ -85,12 +85,12 @@
                    
                     <td>
                         <div class="item text-success" >
-                            <a href="{{route('edit_book', parameters:['id' => $student->id])}}">edit</a>
+                            <a href="{{route('convert_admin', parameters:['id' => $student->id])}}">admin</a>
                         </div>
                         <div class="list-icon-function">
                             
                            
-                            <form action="{{route('delete_book',parameters: ['id' => $student->id])}}" method="POST">
+                            <form action="{{route('delete_student',parameters: ['id' => $student->id])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <div class="item text-danger delete">

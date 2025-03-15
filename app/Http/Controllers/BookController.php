@@ -67,6 +67,12 @@ class BookController extends Controller
         $books = Book::all();
         return view('admin.show_book', compact('books'));
     }
+     
+    public function show_book_student()
+    {
+        $books = Book::all();
+        return view('student.show_book', compact('books'));
+    }
 
     /**
      * Show the form for editing the specified resource.
