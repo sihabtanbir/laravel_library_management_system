@@ -40,9 +40,9 @@
         </form>
 
 
+        <div class="w-full p-4  mx-0">
 
-
-        <table class="table table-striped table-bordered mx-4 overflow-hidden mr-4">
+        <table class="table table-striped table-bordered ">
             <thead>
                 <tr>
                     <th>#</th>
@@ -56,7 +56,7 @@
                 
                
                 <tr>
-                    <td>{{$author->id}}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td class="">
                         
                         <div class="">
@@ -77,6 +77,8 @@
                                 </div>
                             </form> 
                         </div> 
+
+                       
                     </td>
                 </tr>
 
@@ -86,9 +88,13 @@
            
         </table>
 
+    </div>
+
         <div class="">
             {{$authors->Links()}}
         </div>
+
+      
         
    
 

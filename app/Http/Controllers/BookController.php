@@ -16,6 +16,16 @@ class BookController extends Controller
     {
        
     }
+    // public function search(Request $request)   {
+    //     $search = $request->input("search");
+
+    //     $books = Book::where(function($query) use ($search) {
+    //         $query->where("name","like","%$search%")
+    //         ->orWhere("author_name","like","%$search%") 
+              
+    //     })
+    //     ->get();
+    // }
 
     /**
      * Show the form for creating a new resource.

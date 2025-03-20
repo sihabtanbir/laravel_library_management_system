@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\User;
+use App\Models\Author;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class userController extends Controller
-{
+{   
     public function index(){
+        $students = User::where('role','student')->count();
+        $books = Book::count();
+        $authors = Author::count();
+        $categories = Category::count();  
+        return view('admin.dashboard', compact('students','books','authors','categories'));
+    }
+    public function loginForm(){
         return view('auth.login');
     }
     public function create(){

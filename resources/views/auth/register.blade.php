@@ -1,13 +1,15 @@
 <x-navbar> </x-navbar>
 
+<div class="bg-gray-100">
+  <div class="h-[600px] mx-10  pt-10 ">
 <form action="/register" method="POST">
   @csrf
     <div class="space-y-12">
-      <div class="border-b border-gray-900/10 p-12">
-        <h2 class="text-base/7 font-semibold text-gray-900">Profile</h2>
+      <div class=" p-4 mx-auto border border-1 w-[500px] mx-auto bg-white shadow-lg pl-10">
+        <h2 class="text-3xl text-sky-300 border-b">Register</h2>
         <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
   
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-auto">
           <div class="sm:col-span-4">
             <label for="name" class="block text-sm/6 font-medium text-gray-900">name</label>
             <div class="mt-2">
@@ -41,8 +43,7 @@
           </div>
   
          
-        </div>
-      </div>
+        
   
     
   
@@ -57,20 +58,15 @@
   
     <div class="m-6 flex items-center justify-center gap-x-6">
       <button type="reset" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
-      <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
+      <button type="submit" class="rounded-md bg-sky-300 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
     </div>
+
+  </div>
+</div>
   </form>
 
-  <footer class="app-footer">
-    <!--begin::To the end-->
-    <div class="float-end d-none d-sm-inline">Anything you want</div>
-    <!--end::To the end-->
-    <!--begin::Copyright-->
-    <strong>
-      Copyright &copy; 2025&nbsp;
-      Tanbir Ahmmed Sihab
-    </strong>
-    All rights reserved.
-    <!--end::Copyright-->
-  </footer>
+</div>
+</div>
+
+  <x-footer></x-footer>
   

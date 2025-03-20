@@ -59,8 +59,12 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+   
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    
+
+  
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -85,7 +89,7 @@
         <!--end::To the end-->
         <!--begin::Copyright-->
         <strong>
-          Copyright &copy; 2014-2024&nbsp;
+          Copyright &copy; 2014-2024 &nbsp;
           <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
         </strong>
         All rights reserved.

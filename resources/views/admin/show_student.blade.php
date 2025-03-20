@@ -28,7 +28,7 @@
                 
                
                 <tr>
-                    <td>{{$student->id}}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>
                         
                         <div class="">

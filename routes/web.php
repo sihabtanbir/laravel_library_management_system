@@ -16,7 +16,7 @@ Route::get('/',  action: function () {
 
 
     //auth 
-Route::get('/login',[userController::class, 'index']);
+Route::get('/login',[userController::class, 'loginForm']);
 Route::post('/login',[userController::class, 'login']);
 
 Route::get('/register',[userController::class, 'create']);
@@ -33,9 +33,8 @@ Route::delete('/delete/student/{id}',[userController::class, 'deleteStudent'])->
 Route::get('/convert/{id}',[userController::class, 'convertAdmin'])->name('convert_admin');
 
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+
+Route::get('/dashboard',[userController::class, 'index']);
 
 
     Route::get('/category',[BookController::class, 'category']);
@@ -47,6 +46,7 @@ Route::get('/dashboard', function () {
     Route::delete('/delete_author/{id}',[BookController::class, 'delete_author'])->name('delete_author');
 
     Route::get('/add_book',[BookController::class, 'create']);
+    Route::get('/search_book',[BookController::class, 'search']);
     Route::post('/add_book',[BookController::class, 'book_store']);
     Route::get('/show_book',[BookController::class, 'show_book']);
     Route::get('/show_book_student',[BookController::class, 'show_book_student']);

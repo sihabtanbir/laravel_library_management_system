@@ -2,13 +2,19 @@
 
     @section('content')
   
+       <div class="m-4 p-2 ">
+        <form action="" method="get">
+            <input type="text" name="search" id="" placeholder="search" class="border border-2 w-[300px] p-2 bg-white rounded-sm relative">
+            <button type="submit" class=" absolute left-[280px] pt-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+       </div>
+        <h2 class="m-4 text-2xl font-semibold">Show all books</h2>
 
 
-
-
-        <table class="table table-striped table-bordered mx-4 overflow-hidden mr-4">
+        <div class="w-full p-4  mx-0">
+        <table class="table table-striped table-bordered ">
             <thead>
-                <tr>
+                <tr >
                     <th>#</th>
                     <th>Name</th>
                     <th>Author Name</th>
@@ -28,7 +34,7 @@
                 
                
                 <tr>
-                    <td>{{$book->id}}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>
                         
                         <div class="">
@@ -106,6 +112,7 @@
 
            
         </table>
+        </div>
 
         <div class="">
             {{-- {{$books->Links()}} --}}

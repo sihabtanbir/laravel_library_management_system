@@ -56,7 +56,7 @@
                 
                
                 <tr>
-                    <td>{{$category->id}}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td class="">
                         
                         <div class="">
