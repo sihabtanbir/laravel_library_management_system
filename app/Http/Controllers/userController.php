@@ -13,6 +13,13 @@ use Illuminate\Validation\ValidationException;
 
 class userController extends Controller
 {   
+    public function welcome(){
+        $students = User::where('role','student')->count();
+        $books = Book::count();
+        $authors = Author::count();
+        $categories = Category::count();  
+        return view('welcome', compact('students','books','authors','categories'));
+    }
     public function index(){
         $students = User::where('role','student')->count();
         $books = Book::count();
@@ -39,7 +46,7 @@ class userController extends Controller
 
         Auth::login($user);
  
-        return redirect('/');
+        return redirect('/student_dashboard');
     }
 
     public function login(Request $request){

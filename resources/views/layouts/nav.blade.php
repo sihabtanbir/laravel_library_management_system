@@ -148,7 +148,7 @@
         <!--end::Fullscreen Toggle-->
         <!--begin::User Menu Dropdown-->
         <li class="nav-item dropdown user-menu">
-          <p class=" p-2 pb-0"> {{Auth::user()->name }}</p>
+          <p class=" p-2 pb-0"> {{Auth::user()?->name}}</p>
         </li>
         <!--end::User Menu Dropdown-->
       </ul>

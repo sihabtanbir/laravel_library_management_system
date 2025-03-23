@@ -1,9 +1,10 @@
     @extends('layouts.admin')
 
     @section('content')
+    <x-message></x-message>
   
        <div class="m-4 p-2 ">
-        <form action="" method="get">
+        <form action="/search_book" method="get">
             <input type="text" name="search" id="" placeholder="search" class="border border-2 w-[300px] p-2 bg-white rounded-sm relative">
             <button type="submit" class=" absolute left-[280px] pt-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
@@ -30,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($books as $book)
+                 @foreach ($books as $book)
                 
                
                 <tr>
@@ -38,42 +39,42 @@
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->name}}</p>
+                            <p class="body-title-2">{{$book['name']}}</p>
                         </div>
                     </td>
 
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->author_name}}</p>
+                            <p class="body-title-2">{{$book['author_name']}}</p>
                         </div>
                     </td>
 
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->category}}</p>
+                            <p class="body-title-2">{{$book['category']}}</p>
                         </div>
                     </td>
 
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->quantity}}</p>
+                            <p class="body-title-2">{{$book['quantity']}}</p>
                         </div>
                     </td>
 
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->total_page}}</p>
+                            <p class="body-title-2">{{$book['total_page']}}</p>
                         </div>
                     </td>
 
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->price}}</p>
+                            <p class="body-title-2">{{$book['price']}}</p>
                         </div>
                     </td>
 
@@ -81,7 +82,7 @@
                     <td>
                         
                         <div class="">
-                            <p class="body-title-2">{{$book->publish_date}}</p>
+                            <p class="body-title-2">{{$book['publish_date']}}</p>
                         </div>
                     </td>
 
@@ -107,7 +108,7 @@
                     </td>
                 </tr>
 
-                @endforeach
+                @endforeach 
             </tbody>
 
            

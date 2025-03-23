@@ -59,22 +59,22 @@
 
   <div class="flex gap-1 justify-around my-10">
     <div class=" ">
-      <p class="text-2xl text-white text-center">22</p>
+      <p class="text-2xl text-white text-center">{{$students}}</p>
       <p class="text-xl">Total Students</p>
     </div>
 
     <div class=" ">
-      <p class="text-2xl text-white text-center">50</p>
+      <p class="text-2xl text-white text-center">{{$books}}</p>
       <p class="text-xl">Total Books</p>
     </div>
 
     <div class=" ">
-      <p class="text-2xl text-white text-center">10</p>
+      <p class="text-2xl text-white text-center">{{$authors}}</p>
       <p class="text-xl">Total Authors</p>
     </div>
 
     <div class=" ">
-      <p class="text-2xl text-white text-center">12</p>
+      <p class="text-2xl text-white text-center">{{$categories}}</p>
       <p class="text-xl">Total Category</p>
     </div>
 

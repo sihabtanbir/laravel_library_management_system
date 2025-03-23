@@ -16,16 +16,17 @@ class BookController extends Controller
     {
        
     }
-    // public function search(Request $request)   {
-    //     $search = $request->input("search");
-
-    //     $books = Book::where(function($query) use ($search) {
-    //         $query->where("name","like","%$search%")
-    //         ->orWhere("author_name","like","%$search%") 
-              
-    //     })
-    //     ->get();
-    // }
+    public function search()   {
+       $search = request("search");
+       
+       $books = Book::where(function ($query) use ($search) {
+        $query->where("name","like","%$search%")
+       ->orWhere("author_name","like","%$search%");
+       $query->orWhere("category","like","%$search%");
+       });
+      $books = $books->paginate(10);
+        return view('admin.show_book',compact('books'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -66,7 +67,7 @@ class BookController extends Controller
         $book->save();
         
  
-        return redirect('show_book');
+        return redirect('show_book')->with('success', 'successfully add book');
     }
 
     /**
@@ -89,12 +90,42 @@ class BookController extends Controller
      */
     public function edit_book($id)
     {
+       
         
-        $books = Book::findOrFail($id);
-        $books = Book::all();
+        $books = Book::where('id', $id=request()->id)->get();
+       
         $categories = Category::all();
         $authors = Author::all();
         return view('admin.edit_Book', compact('books', 'categories', 'authors'));
+    }
+
+    public function edit_author($id)
+    {
+       
+        
+        $authors = Author::where('id', $id=request()->id)->get();
+       
+      
+        return view('admin.edit_author', compact( 'authors'));
+    }
+    public function update_author(Request $request)
+    {
+        $request->validate([
+            'author_name' => 'required',
+            
+            
+
+        ]);
+
+        $author = Author::findOrFail($request->id);
+
+       $author->author_name = $request->author_name;
+       
+        
+       $author->save();
+       
+ 
+        return redirect('book_author')->with('success', 'successfully update author');
     }
 
     /**
@@ -127,7 +158,7 @@ class BookController extends Controller
         $book->save();
        
  
-        return redirect('show_book');
+        return redirect('show_book')->with('success', 'successfully update book');
     }
 
     /**
@@ -137,7 +168,7 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         
         $book->delete();
-            return redirect() -> back();
+            return redirect() -> back()->with('message', 'successfully delete book');
 
     }
     public function category(){
@@ -151,21 +182,50 @@ class BookController extends Controller
             'category' => 'required|string|max:255',
         ]);
 
-        $book = new Category();
+       $category = new Category();
 
-        $book->category = $request->category;
+       $category->category = $request->category;
         
 
         
-        $book->save();
+       $category->save();
 
-        return redirect() -> back();
+        return redirect() -> back()->with('success', 'successfully add category');
     }
+    public function edit_category($id)
+    {
+       
+        
+        $categories = Category::where('id', $id=request()->id)->get();
+       
+      
+        return view('admin.edit_category', compact( 'categories'));
+    }
+    public function update_category(Request $request)
+    {
+        $request->validate([
+            'category' => 'required',
+            
+            
+
+        ]);
+
+        $category = Category::findOrFail($request->id);
+
+       $category->category = $request->category;
+       
+        
+       $category->save();
+       
+ 
+        return redirect('/category')->with('success', 'successfully update category');
+    }
+
     public function delete_category($id)  {
         $category = Category::findOrFail($id);
         
         $category->delete();
-            return redirect() -> back();
+            return redirect() -> back()->with('message', 'successfully delete category');
 
     }
 
@@ -188,13 +248,13 @@ class BookController extends Controller
         
         $author->save();
 
-        return redirect() -> back();
+        return redirect() -> back()->with('success', 'successfully add author');
     }
     public function delete_author($id)  {
         $author = Author::findOrFail($id);
         
         $author->delete();
-            return redirect() -> back();
+            return redirect() -> back()->with('message', 'successfully delete author');
 
     }
 

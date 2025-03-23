@@ -1,19 +1,22 @@
     @extends('layouts.admin')
 
     @section('content')
+
+    <x-message></x-message>
+
     <form action="/book_author" method="POST">
         @csrf
           <div class=" flex items-center justify-start">
             <div class="">
              
         
-              <div class="  gap-x-6 sm:grid-cols-6">
+              <div class=" flex flex-col ml-4 items-center justify-center">
                 <div class="sm:col-span-4">
                   <label for="category" class="block text-sm/6 font-medium text-gray-900"></label>
                   <div class="mt-2">
                     <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                      
-                      <input type="text" name="author_name" id="name" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="Author name" >
+                      <input type="text" name="author_name" id="name" class="block min-w-0 p-2  text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder="Author name" >
                     </div>
                   </div>
                 </div>
@@ -28,7 +31,7 @@
         
             <div class="m-6  gap-x-6">
             
-                <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Author</button>
+                <button type="submit" class="rounded-md bg-sky-300  text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 p-2 mt-4">Add Author</button>
               </div>
         
             
@@ -77,6 +80,11 @@
                                 </div>
                             </form> 
                         </div> 
+
+                       
+                        <div class="item text-success" >
+                            <a href="{{route('edit_author', parameters:['id' => $author->id])}}">edit</a>
+                        </div>
 
                        
                     </td>

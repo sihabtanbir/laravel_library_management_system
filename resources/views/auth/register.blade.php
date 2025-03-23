@@ -5,13 +5,13 @@
 <form action="/register" method="POST">
   @csrf
     <div class="space-y-12">
-      <div class=" p-4 mx-auto border border-1 w-[500px] mx-auto bg-white shadow-lg pl-10">
+      <div class=" p-4  border-1 w-[450px] mx-auto bg-white shadow-lg pl-10">
         <h2 class="text-3xl text-sky-300 border-b">Register</h2>
         <p class="mt-1 text-sm/6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
   
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-auto">
+        <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 mx-auto">
           <div class="sm:col-span-4">
-            <label for="name" class="block text-sm/6 font-medium text-gray-900">name</label>
+            <label for="name" class="block text-sm/6 font-medium text-gray-900">Name</label>
             <div class="mt-2">
               <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                
@@ -23,7 +23,7 @@
          
 
           <div class="sm:col-span-4">
-            <label for="email" class="block text-sm/6 font-medium text-gray-900">email</label>
+            <label for="email" class="block text-sm/6 font-medium text-gray-900">Email</label>
             <div class="mt-2">
               <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                
@@ -33,7 +33,7 @@
           </div>
   
           <div class="sm:col-span-4">
-            <label for="password" class="block text-sm/6 font-medium text-gray-900">password</label>
+            <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
             <div class="mt-2">
               <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                

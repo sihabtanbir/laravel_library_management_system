@@ -2,6 +2,7 @@
 
     @section('content')
         
+    <x-message></x-message>
    
 
     @endsection

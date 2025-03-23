@@ -2,10 +2,19 @@
 
     @section('content')
   
+    <x-message></x-message>
+
+    <div class="m-4 p-2 ">
+        <form action="/search_student" method="get">
+            <input type="text" name="search" id="" placeholder="search" class=" border-2 w-[300px] p-2 bg-white rounded-sm relative">
+            <button type="submit" class=" absolute left-[280px] pt-2"> <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+       </div>
+
+    <h2 class="text-xl mx-10 m-4">Show student list</h2>
 
 
-
-
+    <div class="mx-10">
         <table class="table table-striped table-bordered ">
             <thead>
                 <tr>
@@ -106,10 +115,11 @@
 
            
         </table>
+    </div>
 
-        <div class="">
-            {{-- {{$students->Links()}} --}}
-        </div>
+        {{-- <div class="">
+             {{$students->Links()}}
+        </div> --}}
         
    
 

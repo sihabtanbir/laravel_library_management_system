@@ -140,4 +140,16 @@ class StudentsController extends Controller
     
         return redirect('/login');
     }
+
+    public function search()   {
+        $search = request("search");
+        
+        $students = User::where(function ($query) use ($search) {
+         $query->where("name","like","%$search%")
+        ->orWhere("email","like","%$search%");
+        $query->orWhere("phone","like","%$search%");
+        });
+       $students = $students->paginate(10);
+         return view('admin.show_student',compact('students'));
+     }
 }

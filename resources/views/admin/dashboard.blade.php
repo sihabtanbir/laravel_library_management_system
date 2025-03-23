@@ -2,8 +2,9 @@
 
 @section('content')
     
+<x-message></x-message>
 
-<div class="flex gap-1 justify-around my-10">
+<div class="flex gap-1 flex-wrap justify-around my-10">
     <div class="bg-green-400 p-10">
       <p class="text-2xl text-white text-center">{{$students}}</p>
       <p class="text-xl border-t p-4">Total Students</p>

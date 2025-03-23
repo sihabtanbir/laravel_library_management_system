@@ -9,13 +9,12 @@ use App\Http\Controllers\BookIssuesController;
 
 
 
-Route::get('/',  action: function () {
-    return view('welcome');
-});
+
+Route::get('/',[userController::class, 'welcome']);
 
 
 
-    //auth 
+    //guest 
 Route::get('/login',[userController::class, 'loginForm']);
 Route::post('/login',[userController::class, 'login']);
 
@@ -25,6 +24,8 @@ Route::get('/register',[userController::class, 'create']);
  
 Route::post('/register',[userController::class, 'register']);
 
+
+//auth
  Route::get('/show_profile',[userController::class, 'show'])->name('show_user');
 Route::get('/show_profile/{id}',[userController::class, 'edit'])->name('edit_user');
 Route::put('/update',[userController::class, 'update'])->name('update_user');
@@ -40,10 +41,14 @@ Route::get('/dashboard',[userController::class, 'index']);
     Route::get('/category',[BookController::class, 'category']);
     Route::post('/category',[BookController::class, 'category_add']);
     Route::delete('/delete_category/{id}',[BookController::class, 'delete_category'])->name('delete_category');
+    Route::get('/edit_category/{id}',[BookController::class, 'edit_category'])->name('edit_category');
+    Route::put('/update_category',[BookController::class, 'update_category'])->name('update_category');
 
     Route::get('/book_author',[BookController::class, 'book_author']);
     Route::post('/book_author',[BookController::class, 'author_add']);
     Route::delete('/delete_author/{id}',[BookController::class, 'delete_author'])->name('delete_author');
+    Route::get('/edit_author/{id}',[BookController::class, 'edit_author'])->name('edit_author');
+    Route::put('/update_author',[BookController::class, 'update_author'])->name('update_author');
 
     Route::get('/add_book',[BookController::class, 'create']);
     Route::get('/search_book',[BookController::class, 'search']);
@@ -60,6 +65,7 @@ Route::get('/dashboard',[userController::class, 'index']);
     Route::get('/add_student',[StudentsController::class, 'create']);
     Route::post('/add_student',[StudentsController::class, 'store']);
     Route::get('/show_student',[StudentsController::class, 'show_student']);
+    Route::get('/search_student',[StudentsController::class, 'search']);
 
 
     Route::get('/books', [BookIssuesController::class, 'listBooks'])->name('book.books');

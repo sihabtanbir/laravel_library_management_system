@@ -2,6 +2,8 @@
 
 @section('content')
 
+<x-message></x-message>
+
 <form action="/add_student" method="POST">
   @csrf
     <div class="space-y-12">
